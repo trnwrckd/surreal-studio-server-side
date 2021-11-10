@@ -80,12 +80,32 @@ async function run() {
         // Get product by _id
         app.get('/products/:id', async (req, res) => {
             const id = req.params.id;
-            console.log("purchase" ,id);
+            console.log("purchase", id);
             const query = { _id: ObjectId(id) };
 
             const currentProduct = await productsCollection.findOne(query);
             res.json(currentProduct);
+        });
+
+        // add product
+        app.post('/products', async (req, res) => {
+            const product = req.body;
+            console.log("Adding product", product);
+            
+            const result = await productsCollection.insertOne(product);
+            res.json(result);
         })
+
+        // delete product
+        app.delete('/products/:deleteId', async (req, res) => {
+            const deleteId = req.params.deleteId;
+            
+            const query = { _id: ObjectId(deleteId) };
+            console.log("deleting", deleteId);
+            const result = await productsCollection.deleteOne(query);
+
+            res.json(result);
+        });
 
         // post new order
         app.post('/orders', async (req, res) => {
