@@ -23,6 +23,7 @@ async function run() {
         const productsCollection = database.collection("products");
         const ordersCollection = database.collection("orders");
         const usersCollection = database.collection("users");
+        const reviewsCollection = database.collection("reviews");
 
         // save user to db
         app.post('/users', async (req, res) => {
@@ -142,6 +143,21 @@ async function run() {
             res.json(result);
         })
 
+        // get reviews
+        app.get('/reviews', async (req, res) => {
+            const cursor = reviewsCollection.find({}).sort({_id: -1});
+            const reviews = await cursor.toArray();
+            res.send(reviews);
+        });
+
+        // add reviews
+        app.post('/reviews', async (req, res) => {
+            const review = req.body;
+            console.log("posting review", review);
+            
+            const result = await reviewsCollection.insertOne(review);
+            res.json(result);
+        })
 
 
         // make admin
