@@ -1,4 +1,4 @@
-# Server for NomadTravels™ , a tour booking platform
+# Server for Surreal Studio, a niche website for surrealistic art
 
 ## Server URL - https://infinite-lowlands-70497.herokuapp.com/
 
