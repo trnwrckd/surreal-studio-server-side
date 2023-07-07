@@ -1,6 +1,5 @@
 # Server for Surreal Studio, a niche website for surrealistic art
 
-## Server URL - https://infinite-lowlands-70497.herokuapp.com/
 ### Live Website URL - https://surreal-studio.firebaseapp.com/
 
 ### Features (CRUD)
